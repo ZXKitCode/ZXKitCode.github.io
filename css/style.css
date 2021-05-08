@@ -14,16 +14,6 @@
   font-family: Lato-Bold;
   src: url("../font/Lato-Bold.ttf"), url("../font/Lato-Bold.eot");
 }
-pre {
-  border: 1px dashed #ddd;
-}
-code {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
-  border-radius: 4px;
-}
 .header {
   text-align: center;
 }
@@ -192,8 +182,10 @@ code {
 }
 .post .post-title {
   margin: 0 0 0.5em;
-  font: 1.953em Lora;
-  color: #777;
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-family: 'Lora', 'STKaiti', 'YouYuan', 'Microsoft YaHei', 'Weibei sc';
 }
 .post .post-title::after {
   content: "";
@@ -204,7 +196,7 @@ code {
   background-color: #f3f3f3;
 }
 .post .post-title a {
-  color: #777;
+  color: #1a1a1a;
   text-decoration: none;
 }
 .post .post-date {
@@ -240,11 +232,12 @@ code {
 }
 .post .post-content {
   position: relative;
-  color: #777;
-  font-size: 1rem;
+  color: #404040;
+  font-size: 1.02rem;
   line-height: 1.6;
   margin-bottom: 1.5em;
   text-align: left;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'YouYuan', 'Lora', 'Microsoft YaHei', 'SimHei';
 }
 .post .post-content a.more-link {
   box-shadow: inset 0 -80px 80px -5px rgba(255,255,255,0.75);
@@ -266,6 +259,47 @@ code {
 .post .post-content img {
   max-width: 100%;
   border-radius: 4px;
+}
+.post .post-content blockquote {
+  border-left: 4px solid var(--theme-color, #42b983);
+  color: #858585;
+  margin: 2em 0;
+  padding-left: 20px;
+  background-color: #f8f8f8;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  word-break: break-all;
+}
+.post .post-content a {
+  color: var(--theme-color, #f78769);
+  font-weight: 600;
+}
+.post .post-content h2 {
+  color: #333;
+  background: linear-gradient(to bottom, transparent 60%, rgba(247,135,105,0.6) 0) no-repeat;
+  width: auto;
+  display: table;
+}
+.post .post-content h3 {
+  color: #525252;
+}
+.post .post-content .highlight {
+  background-color: #f8f8f8;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: auto;
+}
+.post .post-content .gutter {
+  background-color: #bdbdbd;
+  color: #fff;
+  padding-right: 0.2em;
+  padding-left: 0.2em;
+}
+.post .post-content .code {
+  padding-left: 0.6em;
+}
+.post .post-content li {
+  line-height: 1.8;
 }
 .aside {
   overflow: hidden;
