@@ -301,6 +301,15 @@
 .post .post-content li {
   line-height: 1.8;
 }
+.post .post-content code {
+  border-radius: 2px;
+  color: #e96900;
+  margin: 0 2px;
+  padding: 3px 5px;
+  white-space: pre-wrap;
+  background-color: #f8f8f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'YouYuan', 'Lora', 'Microsoft YaHei', 'SimHei';
+}
 .aside {
   overflow: hidden;
   width: 25%;
