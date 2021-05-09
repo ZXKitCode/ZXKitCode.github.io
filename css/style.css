@@ -446,7 +446,7 @@
 .footer .links ul li {
   display: inline-block;
 }
-.footer .links ul li:first-child::after {
+.footer .links ul li::after {
   content: "\00B7";
   margin: 0 0.75em;
 }
