@@ -15,11 +15,11 @@
 
 
     <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
     <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad()
-    </script>
+    </script> -->
     <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
 
     <script>
@@ -64,7 +64,7 @@
             }
 
             function clickToggleAside(btn, show = true) {
-                if (btn == null) {
+                if (btn == null || aside == null) {
                     return
                 }
                 btn.addEventListener('click', function () {
@@ -88,10 +88,13 @@
                 ZXKit
             </a>
         </h3>
-        <button class="menu">menu</button>
+        
+            <button class="menu">menu</button>
+        
     </nav>
-
-    <button class="ipad-menu menu">menu</button>
+    
+        <button class="ipad-menu menu">menu</button>
+    
 
     <h1 class="title" id="main-title">
         <a href="/" class="logo">
@@ -119,42 +122,6 @@
             
         </ul>
     </div>
-    
-        <!-- Highlight.js -->
-        <link rel="stylesheet"
-            href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css">
-        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
-        
-            <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
-        
-        
-            <script>
-                hljs.highlightAll();
-                hljs.initLineNumbersOnLoad();
-            </script>
-            <style>
-                /* for block of numbers */
-            .hljs-ln-numbers {
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-
-                text-align: center;
-                color: #666;
-                vertical-align: top;
-                padding-right: 5px;
-            }
-            /* for block of code */
-            .hljs-ln-code {
-                padding-left: 1em !important;
-            }
-            </style>
-        
-        
-    
 </header>
         
             <main class="main">
@@ -214,6 +181,69 @@
             </aside>
         
     </div>
-</body>
+    <footer class="footer">
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a href="mailto://dong765@qq.com" title="email">
+                    email
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/ZXKitCode" title="github">
+                    github
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="footer-power">
+        <div>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn" title="hexo">Hexo</a>
+        </div>
+        <span>&nbsp&nbsp|&nbsp&nbsp</span>
+        <div>
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/FrontendSophie/hexo-theme-autumn" title="autumn">autumn</a>
+        </div>
+    </div>
+    
+        <!-- Highlight.js -->
+        <link rel="stylesheet"
+            href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+        
+        
+            <script>
+                hljs.highlightAll();
+                hljs.initLineNumbersOnLoad();
+            </script>
+            <style>
+                /* for block of numbers */
+            .hljs-ln-numbers {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
 
+                text-align: center;
+                color: #666;
+                vertical-align: top;
+                padding-right: 5px;
+            }
+            /* for block of code */
+            .hljs-ln-code {
+                padding-left: 1em !important;
+            }
+            </style>
+        
+        
+    
+</header>
+</body>
 </html>

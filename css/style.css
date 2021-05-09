@@ -422,6 +422,82 @@
     height: 33px;
   }
 }
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.footer .links {
+  height: 40px;
+  margin-top: 10px;
+  border-top: 1px dashed #ddd;
+  border-bottom: 1px dashed #ddd;
+  font: 700 13px Lato-Bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer .links ul {
+  text-decoration: none;
+  padding: 0;
+}
+.footer .links ul li {
+  display: inline-block;
+}
+.footer .links ul li:first-child::after {
+  content: "\00B7";
+  margin: 0 0.75em;
+}
+.footer .links ul li:last-child::after {
+  content: '';
+}
+.footer .links ul li a {
+  color: #777;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 600;
+}
+.footer .links ul li a:hover {
+  color: #f78769;
+}
+.footer .footer-power {
+  color: #777;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+.footer .footer-power a {
+  color: #f78769;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.footer .footer-power a:hover {
+  color: #bbb;
+}
+@media screen and (max-width: 1015px) {
+  .header .ipad-menu {
+    display: block;
+  }
+}
+@media screen and (max-width: 640px) {
+  .header .title a {
+    font-size: 2.5rem;
+  }
+  .header .ipad-menu {
+    display: none;
+  }
+  .header .mobile-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header .mobile-menu .menu {
+    padding: 0.2em 0.5em;
+    font: 700 12px Lato-Bold;
+    outline: 3px solid #bbb;
+  }
+}
 body {
   font-size: 1rem;
   line-height: 1.6;

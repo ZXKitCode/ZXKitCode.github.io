@@ -15,11 +15,11 @@
 
 
     <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
     <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad()
-    </script>
+    </script> -->
     <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
 
     <script>
@@ -64,7 +64,7 @@
             }
 
             function clickToggleAside(btn, show = true) {
-                if (btn == null) {
+                if (btn == null || aside == null) {
                     return
                 }
                 btn.addEventListener('click', function () {
@@ -88,10 +88,9 @@
                 ZXKit
             </a>
         </h3>
-        <button class="menu">menu</button>
+        
     </nav>
-
-    <button class="ipad-menu menu">menu</button>
+    
 
     <h1 class="title" id="main-title">
         <a href="/" class="logo">
@@ -118,6 +117,67 @@
             </li>
             
         </ul>
+    </div>
+</header>
+        
+            <main class="main-page">
+                
+<section class="posts">
+    
+        <article class="post">
+            
+                    <h1 class="post-title">
+                        <a href="/2021/b499d05206e6.html">
+                            zxkit介绍
+                        </a>
+                    </h1>
+
+                    <ul class="post-date">
+                        <li>
+                            2021年5月7日
+                        </li>
+                        <li>
+                            DamonHu
+                        </li>
+                    </ul>
+                    
+                    <div class="post-content ">
+                        <p>ZXKit是一个iOS平台整合的开发调试工具，使用<code>swift</code>开发，名字取自我很喜欢的一本小说《诛仙》。</p>
+                            <a href="/2021/b499d05206e6.html" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+</section>
+
+            </main>
+        
+    </div>
+    <footer class="footer">
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a href="mailto://dong765@qq.com" title="email">
+                    email
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/ZXKitCode" title="github">
+                    github
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="footer-power">
+        <div>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn" title="hexo">Hexo</a>
+        </div>
+        <span>&nbsp&nbsp|&nbsp&nbsp</span>
+        <div>
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/FrontendSophie/hexo-theme-autumn" title="autumn">autumn</a>
+        </div>
     </div>
     
         <!-- Highlight.js -->
@@ -156,39 +216,5 @@
         
     
 </header>
-        
-            <main class="main-page">
-                
-<section class="posts">
-    
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2021/b499d05206e6.html">
-                            zxkit介绍
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            2021年5月7日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        <p>ZXKit是一个iOS平台整合的开发调试工具，使用<code>swift</code>开发，名字取自我很喜欢的一本小说《诛仙》。</p>
-                            <a href="/2021/b499d05206e6.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
-            </main>
-        
-    </div>
 </body>
-
 </html>
