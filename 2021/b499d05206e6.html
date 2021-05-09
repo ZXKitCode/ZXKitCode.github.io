@@ -144,12 +144,14 @@
 <p>天地不仁，以万物为刍狗</p>
 </blockquote>
 <p>日常开发会有很多零零散散的调试工具，有不少重叠部分相互使用，所以在考虑使用一种集合的方式，将不同的功能通过插件方式去集合，单独维护，这样可以减少多余的操作。</p>
+<p><img src="./images/zxkit.png"></p>
 <h2 id="一、ZXKitSwift介绍"><a href="#一、ZXKitSwift介绍" class="headerlink" title="一、ZXKitSwift介绍"></a>一、ZXKitSwift介绍</h2><p>ZXKitSwift项目地址：<a target="_blank" rel="noopener" href="https://github.com/ZXKitCode/ZXKitSwift">ZXKitSwift</a>，已经集成了部分便捷的调试功能。例如日志查看，ping网速，FPS显示等，只需要集成该库，即可使用所有预置的调试功能</p>
 <h3 id="使用cocoapods集成"><a href="#使用cocoapods集成" class="headerlink" title="使用cocoapods集成"></a>使用cocoapods集成</h3><pre><code class="ruby">pod &#39;ZXKitSwift&#39;
 </code></pre>
 <p>之后调用注册，会自动注册默认集成的几个插件</p>
 <pre><code class="swift">ZXKit.registPlugin()
 </code></pre>
+<p><img src="./images/2021-05-09.png"></p>
 <h2 id="二、ZXKitCore介绍"><a href="#二、ZXKitCore介绍" class="headerlink" title="二、ZXKitCore介绍"></a>二、ZXKitCore介绍</h2><p>ZXKitCore项目地址：<a target="_blank" rel="noopener" href="https://github.com/ZXKitCode/core">ZXKitCore</a>。简而言之，ZXKitCore是其他开发者开发ZXKit的插件时需要接入该库，正常使用ZXKit功能的场景只集成<code>ZXKitSwift</code>即可。ZXKitCore是ZXKitSwift的支撑框架，提供了整个ZXKit的界面显示，通过协议实现各个插件功能。</p>
 <h3 id="使用cocoapods集成-1"><a href="#使用cocoapods集成-1" class="headerlink" title="使用cocoapods集成"></a>使用cocoapods集成</h3><pre><code class="ruby">pod &#39;ZXKitCore&#39;
 </code></pre>
