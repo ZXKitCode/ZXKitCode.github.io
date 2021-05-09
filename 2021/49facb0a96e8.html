@@ -152,28 +152,73 @@
 
 <h2 id="一、引入ZXKit"><a href="#一、引入ZXKit" class="headerlink" title="一、引入ZXKit"></a>一、引入ZXKit</h2><p>如果需要开发自定义插件，只需要实现<code>ZXKitPluginProtocol</code>即可。实现的方式很简单。</p>
 <h2 id="1、导入核心文件"><a href="#1、导入核心文件" class="headerlink" title="1、导入核心文件"></a>1、导入核心文件</h2><p>项目导入<code>ZXKitCore</code>，可使用cocoapods快速导入核心文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &#39;ZXKitCore&#x2F;core&#39;</span><br></pre></td></tr></table></figure>
-
+<pre><code>pod &#39;ZXKitCore/core&#39;
+</code></pre>
 <h2 id="2、实现协议"><a href="#2、实现协议" class="headerlink" title="2、实现协议"></a>2、实现协议</h2><p>声明一个对象，遵守<code>ZXKitPluginProtocol</code>协议即可。分别返回对应插件的唯一标识，对应的icon、插件名字、插件类型分组、启动函数、是否在运行的状态、关闭功能</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class PluginDemo: NSObject &#123;</span><br><span class="line">    var isPluginRunning &#x3D; true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension PluginDemo: ZXKitPluginProtocol &#123;</span><br><span class="line"></span><br><span class="line">    var pluginIdentifier: String &#123;</span><br><span class="line">        return &quot;com.zxkit.pluginDemo&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var pluginIcon: UIImage? &#123;</span><br><span class="line">        return UIImage(named: &quot;zxkit&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var pluginTitle: String &#123;</span><br><span class="line">        return &quot;插件标题&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var pluginType: ZXKitPluginType &#123;</span><br><span class="line">        return .ui</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func start() &#123;</span><br><span class="line">        print(&quot;点击启动该插件&quot;)</span><br><span class="line">        isPluginRunning &#x3D; true</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var isRunning: Bool &#123;</span><br><span class="line">        return isPluginRunning</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func stop() &#123;</span><br><span class="line">        print(&quot;插件停止运行&quot;)</span><br><span class="line">        isPluginRunning &#x3D; false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>class PluginDemo: NSObject &#123;
+    var isPluginRunning = true
+&#125;
 
+extension PluginDemo: ZXKitPluginProtocol &#123;
+
+    var pluginIdentifier: String &#123;
+        return &quot;com.zxkit.pluginDemo&quot;
+    &#125;
+    
+    var pluginIcon: UIImage? &#123;
+        return UIImage(named: &quot;zxkit&quot;)
+    &#125;
+
+    var pluginTitle: String &#123;
+        return &quot;插件标题&quot;
+    &#125;
+
+    var pluginType: ZXKitPluginType &#123;
+        return .ui
+    &#125;
+
+    func start() &#123;
+        print(&quot;点击启动该插件&quot;)
+        isPluginRunning = true
+    &#125;
+    
+    var isRunning: Bool &#123;
+        return isPluginRunning
+    &#125;
+
+    func stop() &#123;
+        print(&quot;插件停止运行&quot;)
+        isPluginRunning = false
+    &#125;
+&#125;
+</code></pre>
 <p><code>isRunning</code>属性会在<code>ZXKit</code>中显示运行状态，运行状态中的插件右上角会有绿色标识，插件运行中，用户点击时会调用插件的<code>stop</code>函数，未运行点击时会调用插件的<code>start</code>函数。</p>
 <p>如果您的插件需要一直运行，例如<code>Logger</code>插件，则可以将<code>isRunning</code>属性一直设置为<code>true</code>，建议stop函数中给用户提示。</p>
 <h2 id="3、注册插件"><a href="#3、注册插件" class="headerlink" title="3、注册插件"></a>3、注册插件</h2><p>实现完协议之后注册插件即可，全局只需注册一次即可，如果您的插件是单例，将单例对象传入也可以</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注册插件</span><br><span class="line">ZXKit.regist(plugin: PluginDemo())</span><br></pre></td></tr></table></figure>
-
+<pre><code>//注册插件
+ZXKit.regist(plugin: PluginDemo())
+</code></pre>
 <h2 id="4、完成"><a href="#4、完成" class="headerlink" title="4、完成"></a>4、完成</h2><p>cocoapods发布上线之后，当用户打开<code>ZXKit</code>时，调试集合页就会出现您的插件</p>
-<h2 id="5、更多属性"><a href="#5、更多属性" class="headerlink" title="5、更多属性"></a>5、更多属性</h2><h3 id="5-1、获取悬浮的按钮对象"><a href="#5-1、获取悬浮的按钮对象" class="headerlink" title="5.1、获取悬浮的按钮对象"></a>5.1、获取悬浮的按钮对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZXKit.floatButton</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-2、还原悬浮按钮的样式"><a href="#5-2、还原悬浮按钮的样式" class="headerlink" title="5.2、还原悬浮按钮的样式"></a>5.2、还原悬浮按钮的样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZXKit.resetFloatButton()</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-3、显示输入框"><a href="#5-3、显示输入框" class="headerlink" title="5.3、显示输入框"></a>5.3、显示输入框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZXKit.showInput &#123; (text) in</span><br><span class="line">	print(text)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-4、获得输入框对象"><a href="#5-4、获得输入框对象" class="headerlink" title="5.4、获得输入框对象"></a>5.4、获得输入框对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZXKit.textField</span><br></pre></td></tr></table></figure>
-
+<h2 id="5、更多属性"><a href="#5、更多属性" class="headerlink" title="5、更多属性"></a>5、更多属性</h2><h3 id="5-1、获取悬浮的按钮对象"><a href="#5-1、获取悬浮的按钮对象" class="headerlink" title="5.1、获取悬浮的按钮对象"></a>5.1、获取悬浮的按钮对象</h3><pre><code>ZXKit.floatButton
+</code></pre>
+<h3 id="5-2、还原悬浮按钮的样式"><a href="#5-2、还原悬浮按钮的样式" class="headerlink" title="5.2、还原悬浮按钮的样式"></a>5.2、还原悬浮按钮的样式</h3><pre><code>ZXKit.resetFloatButton()
+</code></pre>
+<h3 id="5-3、显示输入框"><a href="#5-3、显示输入框" class="headerlink" title="5.3、显示输入框"></a>5.3、显示输入框</h3><pre><code>ZXKit.showInput &#123; (text) in
+    print(text)
+&#125;
+</code></pre>
+<h3 id="5-4、获得输入框对象"><a href="#5-4、获得输入框对象" class="headerlink" title="5.4、获得输入框对象"></a>5.4、获得输入框对象</h3><pre><code>ZXKit.textField
+</code></pre>
 <h2 id="二、消息通知"><a href="#二、消息通知" class="headerlink" title="二、消息通知"></a>二、消息通知</h2><p><code>ZXKitCore</code>提供了以下消息通知，您可以通过绑定以下通知获取框架显示、隐藏、关闭、注册新插件的时机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注册新插件</span><br><span class="line">NSNotification.Name.ZXKitPluginRegist</span><br><span class="line">&#x2F;&#x2F;显示</span><br><span class="line">NSNotification.Name.ZXKitShow</span><br><span class="line">&#x2F;&#x2F;隐藏</span><br><span class="line">NSNotification.Name.ZXKitHide</span><br><span class="line">&#x2F;&#x2F;关闭</span><br><span class="line">NSNotification.Name.ZXKitClose</span><br></pre></td></tr></table></figure>
-
+<pre><code>//注册新插件
+NSNotification.Name.ZXKitPluginRegist
+//显示
+NSNotification.Name.ZXKitShow
+//隐藏
+NSNotification.Name.ZXKitHide
+//关闭
+NSNotification.Name.ZXKitClose
+</code></pre>
 <h2 id="默认安装"><a href="#默认安装" class="headerlink" title="默认安装"></a>默认安装</h2><p>我们会不时收录优秀的调试库，当用户执行安装<code>ZXKitSwift</code>时，会默认安装。如您想收录将插件收录到<code>ZXKitSwift</code>默认的集成库中，首先确认您没有使用<code>iOS</code>私有函数等影响App Store上架的违规因素，然后可以在<a target="_blank" rel="noopener" href="https://github.com/ZXKitCode/ZXKitSwift">ZXKitSwift</a>通知我们即可</p>
 
     </div>
@@ -239,6 +284,9 @@
             /* for block of code */
             .hljs-ln-code {
                 padding-left: 1em !important;
+            }
+            .hljs {
+                padding-left: 1em !important
             }
             </style>
         
