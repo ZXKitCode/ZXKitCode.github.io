@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="keywords" content="zxkit,ios,debug,debug-tool,swift,kit" />
+    <title>
+        ZXKit
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://zxkit.com/img/favicon.ico" />
+     
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
+
+    <script>
+        infiniteScroll()
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const [
+                mainTitle,
+                mobileMenu,
+                mobileMainTitle,
+                mobileMenuBtn,
+                ipadMenuBtn,
+                aside,
+                closeBtn,
+            ] = getEle(
+                '#main-title',
+                '.mobile-menu',
+                '.mobile-menu h3',
+                '.mobile-menu button',
+                '.ipad-menu',
+                'aside',
+                'aside .close',
+            )
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].intersectionRatio <= 0) {
+                    mobileMainTitle.classList.remove('invisibile')
+                } else {
+                    mobileMainTitle.classList.add('invisibile')
+                }
+            })
+            io.observe(mainTitle)
+
+            clickToggleAside(mobileMenuBtn)
+            clickToggleAside(ipadMenuBtn)
+            clickToggleAside(closeBtn, false)
+
+            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
+            if (isMenuVisible) document.body.style.background = 'none'
+
+            function getEle(...args) {
+                return args.map(arg => document.querySelector(arg))
+            }
+
+            function clickToggleAside(btn, show = true) {
+                if (btn == null || aside == null) {
+                    return
+                }
+                btn.addEventListener('click', function () {
+                    if (show) {
+                        aside.style.display = 'block'
+                    } else {
+                        aside.style.display = 'none'
+                    }
+                })
+            }
+        })
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+    <div class="container">
+        <header class="header">
+    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <h3 class="invisibile">
+            <a href="/" class="logo">
+                ZXKit
+            </a>
+        </h3>
+        
+    </nav>
+    
+
+    <h1 class="title" id="main-title">
+        <a href="/" class="logo">
+            ZXKit
+        </a>
+    </h1>
+    <h2 class="desc">
+        
+    </h2>
+
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/ZXKitCode">
+                    天地不仁
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="http://blog.hudongdong.com/">
+                    以万物为刍狗
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</header>
+        
+            <main class="main-page">
+                <article class="post">
+    
+    
+    <h4 class="post-cat">
+        <a href="/categories/plugin/">
+            plugin
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        iOS日志调试工具-Logger
+    </h2>
+    <ul class="post-date">
+        <li>
+            2021-05-11
+        </li>
+        <li>
+            DamonHu
+        </li>
+    </ul>
+    <div class="post-content">
+        <h1 id="ZXKitLogger"><a href="#ZXKitLogger" class="headerlink" title="ZXKitLogger"></a>ZXKitLogger</h1><p>该项目由<a target="_blank" rel="noopener" href="https://github.com/DamonHu/HDWindowLoggerSwift">HDWindowLoggerSwift</a>更新升级而来，iOS端将输出日志log悬浮显示在屏幕上，可以生成日志文件分享，便于在真机没有连接xcode的情况下调试信息。可以分享、筛选log等操作。使用SQLite存储日志信息，支持系统分享和屏幕FPS显示。后续更新会增加更多的功能，而不仅限于日志输出。</p>
+<p>调试窗口可在屏幕上显示，可以设置是否自动滚动日志便于调试，也可以将输出的日志分享到微信、twitter等程序，以便离线查看。同时可以搜索输出内容，敏感内容可以设置密码进行加密，分享出来的文件也会进行加密，可以通过密码在线解密。</p>
+<p>该项目使用<code>sqlite</code>高效存储，后台运行期间只记录数据，不会影响界面性能，前台运行效率高，基本和Xcode同步输出日志，可以查看和xCode日志输出的对比gif图</p>
+<table>
+<thead>
+<tr>
+<th>预览gif图</th>
+<th>Xcode对比gif图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="/images/logger/preview.gif"></td>
+<td><img src="/images/logger/debug.gif"></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>手机预览图</th>
+<th>XCode预览图</th>
+<th>分享 &amp; FPS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="/images/logger/mobile_preview.png"></td>
+<td><img src="/images/logger/xcode_preview.png"></td>
+<td><img src="/images/logger/share_preview.png"></td>
+</tr>
+</tbody></table>
+<p><img src="/images/logger/preview.png"></p>
+<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p>你可以选择使用cocoaPod安装，也可以直接下载源文件拖入项目中</p>
+<h3 id="1-1、cocoaPod安装"><a href="#1-1、cocoaPod安装" class="headerlink" title="1.1、cocoaPod安装"></a>1.1、cocoaPod安装</h3><pre><code>pod &#39;ZXKitLogger&#39;
+</code></pre>
+<h4 id="1-1-1、wcdb兼容"><a href="#1-1-1、wcdb兼容" class="headerlink" title="1.1.1、wcdb兼容"></a>1.1.1、wcdb兼容</h4><p>如果你集成了腾讯的<a target="_blank" rel="noopener" href="https://github.com/Tencent/wcdb">Tencent/wcdb</a>，由于修改优化了<code>sqlite</code>的系统功能，会导致函数名一样报错，可以使用wcdb版本</p>
+<pre><code>pod &#39;ZXKitCore/wcdb&#39;
+</code></pre>
+<h3 id="1-2、文件安装"><a href="#1-2、文件安装" class="headerlink" title="1.2、文件安装"></a>1.2、文件安装</h3><p>可以将工程底下，<code>pod</code>文件夹内的文件拖入项目即可</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><p>简单三步即可调用</p>
+<h3 id="1、导入头文件"><a href="#1、导入头文件" class="headerlink" title="1、导入头文件"></a>1、导入头文件</h3><pre><code>import ZXKitCore
+</code></pre>
+<h3 id="2、显示悬浮窗"><a href="#2、显示悬浮窗" class="headerlink" title="2、显示悬浮窗"></a>2、显示悬浮窗</h3><pre><code>ZXKitLogger.show()
+</code></pre>
+<h3 id="3、打印日志内容"><a href="#3、打印日志内容" class="headerlink" title="3、打印日志内容"></a>3、打印日志内容</h3><p>四种输出方式字体颜色显示不同，对应的printLog不同的类型</p>
+<pre><code>ZXDebugLog(log)    //调试输出，内容不会写入到窗口，只在xcode输出
+
+ZXNormalLog(log)    //日志为绿色
+
+ZXWarnLog(log)    //日志为黄色
+
+ZXErrorLog(log)    //日志为红色
+
+ZXPrivacyLog(log)    //加密数据的输出，具体加密方式在下面的加密中说明
+</code></pre>
+<p>输出格式</p>
+<pre><code>13:45:00.153  &gt;   [
+  &quot;1111111&quot;,
+  &quot;22222222&quot;,
+  &quot;sdjkhfsjkdfjkhsdhjfk&quot;,
+  &quot;3333sjdhgfhjg&quot;
+]
+</code></pre>
+<h2 id="三、更多设置"><a href="#三、更多设置" class="headerlink" title="三、更多设置"></a>三、更多设置</h2><p>通过其他设置可以实现获取更多功能</p>
+<h3 id="1、设置是否输出全部信息"><a href="#1、设置是否输出全部信息" class="headerlink" title="1、设置是否输出全部信息"></a>1、设置是否输出全部信息</h3><pre><code>ZXKitLogger.isFullLogOut = true
+</code></pre>
+<p>如果设置为输出全部调试信息，那么输出的格式是下面这样的，包含了输出文件、调用的行数、和调用的函数</p>
+<pre><code>13:51:38.498  &gt;   [File:ViewController.swift]:[Line:41:[Function:onClickButton()]]-Log:
+[
+  &quot;1111111&quot;,
+  &quot;22222222&quot;,
+  &quot;sdjkhfsjkdfjkhsdhjfk&quot;,
+  &quot;3333sjdhgfhjg&quot;
+]
+</code></pre>
+<h3 id="2、是否在xcode底部的调试栏同步输出内容"><a href="#2、是否在xcode底部的调试栏同步输出内容" class="headerlink" title="2、是否在xcode底部的调试栏同步输出内容"></a>2、是否在xcode底部的调试栏同步输出内容</h3><pre><code>ZXKitLogger.isSyncConsole = true
+</code></pre>
+<h3 id="3、针对不同用户设置独立日志文件夹"><a href="#3、针对不同用户设置独立日志文件夹" class="headerlink" title="3、针对不同用户设置独立日志文件夹"></a>3、针对不同用户设置独立日志文件夹</h3><pre><code>ZXKitLogger.userID = &quot;1001&quot;
+</code></pre>
+<h3 id="4、清空log"><a href="#4、清空log" class="headerlink" title="4、清空log"></a>4、清空log</h3><pre><code>ZXKitLogger.cleanLog()
+</code></pre>
+<h3 id="5、关闭整个log窗口"><a href="#5、关闭整个log窗口" class="headerlink" title="5、关闭整个log窗口"></a>5、关闭整个log窗口</h3><pre><code>ZXKitLogger.close()
+</code></pre>
+<h3 id="6、仅隐藏log输出窗口"><a href="#6、仅隐藏log输出窗口" class="headerlink" title="6、仅隐藏log输出窗口"></a>6、仅隐藏log输出窗口</h3><pre><code>ZXKitLogger.hide()
+</code></pre>
+<h3 id="7、设置显示log最大记录数，0为不限制-默认为100"><a href="#7、设置显示log最大记录数，0为不限制-默认为100" class="headerlink" title="7、设置显示log最大记录数，0为不限制, 默认为100"></a>7、设置显示log最大记录数，0为不限制, 默认为100</h3><pre><code>ZXKitLogger.maxDisplayCount = 100
+</code></pre>
+<h3 id="8、-删除本地日志文件"><a href="#8、-删除本地日志文件" class="headerlink" title="8、 删除本地日志文件"></a>8、 删除本地日志文件</h3><pre><code>ZXKitLogger.deleteLogFile()
+</code></pre>
+<h3 id="9、-本地日志文件的有效期（天），超出有效期的本地日志会被删除，0为没有有效期，默认为7天"><a href="#9、-本地日志文件的有效期（天），超出有效期的本地日志会被删除，0为没有有效期，默认为7天" class="headerlink" title="9、 本地日志文件的有效期（天），超出有效期的本地日志会被删除，0为没有有效期，默认为7天"></a>9、 本地日志文件的有效期（天），超出有效期的本地日志会被删除，0为没有有效期，默认为7天</h3><pre><code>ZXKitLogger.logExpiryDay = 0
+</code></pre>
+<h3 id="10、获取数据库存储的日志信息数组，也可以指定日期"><a href="#10、获取数据库存储的日志信息数组，也可以指定日期" class="headerlink" title="10、获取数据库存储的日志信息数组，也可以指定日期"></a>10、获取数据库存储的日志信息数组，也可以指定日期</h3><pre><code>//获取今日的日志
+ZXKitLogger.getAllLog()
+//指定日期
+ZXKitLogger.getAllLog(date: Date(timeIntervalSinceNow: 1000))
+</code></pre>
+<p>如果你想获取所有日志文件，可以获取日志存储的文件夹，返回的是一个URL结果，然后自己进行遍历去处理</p>
+<pre><code>ZXKitLogger.getDBFolder()
+</code></pre>
+<p>例如</p>
+<pre><code>let dbFolder = ZXKitLogger.getDBFolder()
+        
+if let enumer = FileManager.default.enumerator(atPath: dbFolder.path) &#123;
+    while let file = enumer.nextObject() &#123;
+         if let file: String = file as? String &#123;
+            if file.hasSuffix(&quot;.db&quot;) &#123;
+                //获取到具体的log文件日志
+                let logFilePath = dbFolder.appendingPathComponent(file, isDirectory: false)
+             &#125;
+         &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="LogContent协议"><a href="#LogContent协议" class="headerlink" title="LogContent协议"></a>LogContent协议</h3><p>如果你想自定义输出的内容，可以集成并该类型的LogContent协议，例如设置打印<code>URL</code>类型只输出它的<code>path</code>，可以直接设置返回的<code>logStringValue</code>即可。</p>
+<pre><code>extension URL: LogContent &#123;
+    public var logStringValue: String &#123;
+        return self.path
+    &#125;
+&#125;
+</code></pre>
+<h3 id="支持ZXKit快捷启动"><a href="#支持ZXKit快捷启动" class="headerlink" title="支持ZXKit快捷启动"></a>支持ZXKit快捷启动</h3><p>该工具支持<code>ZXKit</code>快捷启动，如果需要在ZXKit工具集中显示，可以执行该命令</p>
+<pre><code>pod &#39;ZXKitCore/zxkit&#39;
+</code></pre>
+<p>之后注册到<code>ZXKit</code>即可</p>
+<pre><code>ZXKitLogger.registZXKit()
+</code></pre>
+<h2 id="四、-敏感信息输出加密和解密"><a href="#四、-敏感信息输出加密和解密" class="headerlink" title="四、 敏感信息输出加密和解密"></a>四、 敏感信息输出加密和解密</h2><p>如果存在敏感信息，不希望用户或者手机调试时看到，简单两步就可以设置加密</p>
+<pre><code>//1、设置加密密码，32个字符数字
+ZXKitLogger.privacyLogPassword = &quot;12345678901234561234567890123456&quot;
+
+//2、输出加密内容
+ZXPrivacyLog(&quot;这个是加密数据的测试数据222&quot;)
+</code></pre>
+<h3 id="4-2、显示窗内容解密"><a href="#4-2、显示窗内容解密" class="headerlink" title="4.2、显示窗内容解密"></a>4.2、显示窗内容解密</h3><p>设置之后，在显示窗中的显示为<code>该内容已加密，请解密后查看</code>，输入设置的加密密码然后点击解密之后即可显示正常的加密内容。</p>
+<h3 id="4-1、-分享文件解密"><a href="#4-1、-分享文件解密" class="headerlink" title="4.1、 分享文件解密"></a>4.1、 分享文件解密</h3><ul>
+<li>如果已经在显示窗解密了数据，此时分享的文件内容不会加密，会显示所有内容。</li>
+<li>如果在显示窗中未解密，此时分享出的文件内容为AES加密内容，可以搜索<code>AES在线解密的网站</code>去解密内容，设置参照下图：</li>
+</ul>
+<p><img src="/images/logger/decrypt.png"></p>
+<ul>
+<li>模式: CBC</li>
+<li>填充: Pkcs7</li>
+<li>数据块: 128位</li>
+<li>偏移量: abcdefghijklmnop</li>
+<li>编码: Base64</li>
+<li>字符集: UTF8</li>
+<li>密码: 你自己在sdk中设置的密码</li>
+</ul>
+<p>然后点击解密即可。</p>
+<p>这里推荐几个在线的网站，你也可以自己百度</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://oktools.net/aes">https://oktools.net/aes</a></li>
+<li><a target="_blank" rel="noopener" href="http://tools.bugscaner.com/cryptoaes/">http://tools.bugscaner.com/cryptoaes/</a></li>
+<li><a target="_blank" rel="noopener" href="http://tool.chacuo.net/cryptaes">http://tool.chacuo.net/cryptaes</a></li>
+</ul>
+<h2 id="五、其他说明"><a href="#五、其他说明" class="headerlink" title="五、其他说明"></a>五、其他说明</h2><ol>
+<li>为了查看方便，分为普通、警告、错误三种类型，对应了三种不同的颜色，方便查看</li>
+<li>点击对应的cell可以直接将输出log复制到系统剪贴板</li>
+<li>分享调用的系统分享，可以分享到哪个软件取决于你手机上安装的有哪些软件。</li>
+</ol>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a target="_blank" rel="noopener" href="https://github.com/ZXKitCode/logger">ZXKitCode/logger</a></p>
+
+    </div>
+</article>
+            </main>
+        
+    </div>
+    <footer class="footer">
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a href="mailto:dong765@qq.com" title="email">
+                    email
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/ZXKitCode" title="github">
+                    github
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="http://blog.hudongdong.com/" title="Blog">
+                    Blog
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="footer-power">
+        <div>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn" title="hexo">Hexo</a>
+        </div>
+        <span>&nbsp&nbsp|&nbsp&nbsp</span>
+        <div>
+            Theme by <a target="_blank" rel="noopener" href="https://github.com/FrontendSophie/hexo-theme-autumn" title="autumn">autumn</a>
+        </div>
+    </div>
+    
+        <!-- Highlight.js -->
+        <link rel="stylesheet"
+            href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+        
+        
+            <script>
+                hljs.highlightAll();
+                hljs.initLineNumbersOnLoad();
+            </script>
+            <style>
+                /* for block of numbers */
+            .hljs-ln-numbers {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
+                text-align: center;
+                color: #666;
+                vertical-align: top;
+                padding-right: 5px;
+            }
+            /* for block of code */
+            .hljs-ln-code {
+                padding-left: 1em !important;
+            }
+            .hljs {
+                padding-left: 1em !important
+            }
+            </style>
+        
+        
+    
+</header>
+</body>
+</html>
