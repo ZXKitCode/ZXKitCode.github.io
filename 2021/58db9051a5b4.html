@@ -167,19 +167,20 @@
 </tr>
 </tbody></table>
 <p><img src="/images/logger/preview.png"></p>
-<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p>你可以选择使用cocoaPod安装，也可以直接下载源文件拖入项目中</p>
-<h3 id="1-1、cocoaPod安装"><a href="#1-1、cocoaPod安装" class="headerlink" title="1.1、cocoaPod安装"></a>1.1、cocoaPod安装</h3><pre><code>pod &#39;ZXKitLogger&#39;
+<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p>你可以选择使用cocoaPod安装，也可以直接下载源文件拖入项目中。该库支持单独使用，可以参考文章最后的项目链接进行了解，该文章只说明使用<code>ZXKit</code>拓展的功能</p>
+<h3 id="1-1、cocoaPod安装"><a href="#1-1、cocoaPod安装" class="headerlink" title="1.1、cocoaPod安装"></a>1.1、cocoaPod安装</h3><pre><code>pod &#39;ZXKitCore/zxkit&#39;
 </code></pre>
 <h4 id="1-1-1、wcdb兼容"><a href="#1-1-1、wcdb兼容" class="headerlink" title="1.1.1、wcdb兼容"></a>1.1.1、wcdb兼容</h4><p>如果你集成了腾讯的<a target="_blank" rel="noopener" href="https://github.com/Tencent/wcdb">Tencent/wcdb</a>，由于修改优化了<code>sqlite</code>的系统功能，会导致函数名一样报错，可以使用wcdb版本</p>
 <pre><code>pod &#39;ZXKitCore/wcdb&#39;
+pod &#39;ZXKitCore/zxkit&#39;
 </code></pre>
-<h3 id="1-2、文件安装"><a href="#1-2、文件安装" class="headerlink" title="1.2、文件安装"></a>1.2、文件安装</h3><p>可以将工程底下，<code>pod</code>文件夹内的文件拖入项目即可</p>
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><p>简单三步即可调用</p>
-<h3 id="1、导入头文件"><a href="#1、导入头文件" class="headerlink" title="1、导入头文件"></a>1、导入头文件</h3><pre><code>import ZXKitCore
+<h3 id="导入头文件，注册ZXKit"><a href="#导入头文件，注册ZXKit" class="headerlink" title="导入头文件，注册ZXKit"></a>导入头文件，注册ZXKit</h3><pre><code>import ZXKitLogger
+
+//注册ZXKit
+ZXKitLogger.registZXKit()
 </code></pre>
-<h3 id="2、显示悬浮窗"><a href="#2、显示悬浮窗" class="headerlink" title="2、显示悬浮窗"></a>2、显示悬浮窗</h3><pre><code>ZXKitLogger.show()
-</code></pre>
-<h3 id="3、打印日志内容"><a href="#3、打印日志内容" class="headerlink" title="3、打印日志内容"></a>3、打印日志内容</h3><p>四种输出方式字体颜色显示不同，对应的printLog不同的类型</p>
+<h3 id="打印日志内容"><a href="#打印日志内容" class="headerlink" title="打印日志内容"></a>打印日志内容</h3><p>四种输出方式字体颜色显示不同，对应的printLog不同的类型</p>
 <pre><code>ZXDebugLog(log)    //调试输出，内容不会写入到窗口，只在xcode输出
 
 ZXNormalLog(log)    //日志为绿色
@@ -254,12 +255,6 @@ if let enumer = FileManager.default.enumerator(atPath: dbFolder.path) &#123;
         return self.path
     &#125;
 &#125;
-</code></pre>
-<h3 id="支持ZXKit快捷启动"><a href="#支持ZXKit快捷启动" class="headerlink" title="支持ZXKit快捷启动"></a>支持ZXKit快捷启动</h3><p>该工具支持<code>ZXKit</code>快捷启动，如果需要在ZXKit工具集中显示，可以执行该命令</p>
-<pre><code>pod &#39;ZXKitCore/zxkit&#39;
-</code></pre>
-<p>之后注册到<code>ZXKit</code>即可</p>
-<pre><code>ZXKitLogger.registZXKit()
 </code></pre>
 <h2 id="四、-敏感信息输出加密和解密"><a href="#四、-敏感信息输出加密和解密" class="headerlink" title="四、 敏感信息输出加密和解密"></a>四、 敏感信息输出加密和解密</h2><p>如果存在敏感信息，不希望用户或者手机调试时看到，简单两步就可以设置加密</p>
 <pre><code>//1、设置加密密码，32个字符数字

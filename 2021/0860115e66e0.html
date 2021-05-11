@@ -115,107 +115,64 @@
 </header>
         
             <main class="main-page">
-                
-<section class="posts">
+                <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/0860115e66e0.html">
-                            iOS端ping工具-HDPingTools
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/plugin/">
+            plugin
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        iOS端ping工具-HDPingTools
+    </h2>
+    <ul class="post-date">
+        <li>
+            2021-05-11
+        </li>
+        <li>
+            DamonHu
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>这是一个ios平台用来ping的工具，使用swift语言开发。支持使用cocoapods集成。三步即可使用</p>
+<span id="more"></span>
 
-                    <ul class="post-date">
-                        <li>
-                            2021年5月11日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        <p>这是一个ios平台用来ping的工具，使用swift语言开发。支持使用cocoapods集成。三步即可使用</p>
-                            <a href="/2021/0860115e66e0.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/58db9051a5b4.html">
-                            iOS日志调试工具-Logger
-                        </a>
-                    </h1>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>虽然在<code>AFNetworking</code>和<code>Alamofire</code>中，提供的有检测手机网络的功能，但是只是知道了用户的网络连接方式，并不清楚用户的真实用户体验，可能用户虽然连接的是wifi，但是网速还不如3G网络。所以只要不是断网条件，用户发起请求时的真实网速更重要。</p>
+<p>所以就封装了这个功能，可以通过该项目去<code>ping</code>一下请求的域名，以便得到返回的时间，去判断用户网络是否在正常范围。</p>
+<p>该功能是基于苹果封装的<a target="_blank" rel="noopener" href="https://developer.apple.com/library/archive/samplecode/SimplePing/Introduction/Intro.html#//apple_ref/doc/uid/DTS10000716">SimplePing</a>再次进行封装优化，使用更加简单，三步即可调用</p>
+<h2 id="通过CocoaPods安装"><a href="#通过CocoaPods安装" class="headerlink" title="通过CocoaPods安装"></a>通过CocoaPods安装</h2><pre><code class="ruby">pod &#39;HDPingTools/zxkit&#39;
+</code></pre>
+<h3 id="创建ping对象，hostName为自定义的域名"><a href="#创建ping对象，hostName为自定义的域名" class="headerlink" title="创建ping对象，hostName为自定义的域名"></a>创建ping对象，hostName为自定义的域名</h3><pre><code class="swift">let pingTools = HDPingTools(hostName: &quot;www.apple.com&quot;)
 
-                    <ul class="post-date">
-                        <li>
-                            2021年5月11日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="/images/logger/preview.gif">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2021/58db9051a5b4.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/21109ad2ad7a.html">
-                            iOS FPS显示插件
-                        </a>
-                    </h1>
+//注册插件
+ZXKit.regist(plugin: pingTools)
+</code></pre>
+<p>注册之后即可在ZXKit中显示，点击可以自定义输入网址进行ping测试</p>
+<h3 id="更多自定义用法"><a href="#更多自定义用法" class="headerlink" title="更多自定义用法"></a>更多自定义用法</h3><pre><code class="swift">pingTools.start(pingType: .any, interval: .second(10)) &#123; (response, error) in
+      print(response?.pingAddressIP ?? &quot;&quot;)
+ &#125;
+</code></pre>
+<p><code>interval</code>大于0时，会在固定间隔重复发送ping请求，等于0时只会发起一次ping请求</p>
+<p>其中响应的<code>response</code>包含了以下内容</p>
+<ul>
+<li><code>pingAddressIP</code> 域名对应的ip地址</li>
+<li><code>responseTime</code> ping响应的时间</li>
+<li><code>responseBytes</code> ping响应的字节数</li>
+</ul>
+<h3 id="主动关闭请求"><a href="#主动关闭请求" class="headerlink" title="主动关闭请求"></a>主动关闭请求</h3><pre><code class="swift">pingTools.stop()
+</code></pre>
+<h3 id="可选配置"><a href="#可选配置" class="headerlink" title="可选配置"></a>可选配置</h3><pre><code class="swift">public var timeout: HDPingTimeInterval = .millisecond(1000)  //自定义超时时间，默认1000毫秒，设置为0则一直等待
+public var debugLog = true                                  //是否开启日志输出
+public var stopWhenError = false                            //遇到错误停止ping
+public private(set) var isPing = false                //可以判断当前是否有ping任务在进行中
+</code></pre>
+<p><strong>注意：网站或者连接的路由器如果设置了禁止ping，那么ping的时候会报错，需要解除该限制才可以正常使用</strong></p>
 
-                    <ul class="post-date">
-                        <li>
-                            2021年5月9日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="/images/2021-05-06.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        <p>FPS是图像领域中的定义，是指画面每秒传输帧数，通俗来讲就是指动画或视频的画面数。FPS是测量用于保存、显示动态视频的信息数量。每秒钟帧数越多，所显示的动作就会越流畅。通常，要避免动作不流畅的最低是30。</p>
-<p>该工具可用来iOS平台测试帧率，同时显示在<code>ZXKit</code>的列表和悬浮窗中</p>
-                            <a href="/2021/21109ad2ad7a.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    </div>
+</article>
             </main>
         
     </div>
