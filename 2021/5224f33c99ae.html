@@ -115,140 +115,54 @@
 </header>
         
             <main class="main-page">
-                
-<section class="posts">
+                <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/5224f33c99ae.html">
-                            iOS沙盒文件浏览器-ZXFileBrowser
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/plugin/">
+            plugin
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        iOS沙盒文件浏览器-ZXFileBrowser
+    </h2>
+    <ul class="post-date">
+        <li>
+            2021-05-13
+        </li>
+        <li>
+            DamonHu
+        </li>
+    </ul>
+    <div class="post-content">
+        <h1 id="ZXFileBrowser"><a href="#ZXFileBrowser" class="headerlink" title="ZXFileBrowser"></a>ZXFileBrowser</h1><p>iOS端沙盒文件浏览器，可查看、复制、移动、删除文件等操作。</p>
+<p>该项目是<a target="_blank" rel="noopener" href="https://github.com/ZXKitCode/ZXKitSwift">ZXKitSwift</a>的内置功能插件，也可以单独集成当做独立功能使用。</p>
+<p><strong>如果您已经集成了<code>ZXKitSwift</code>，插件列表中会自动显示该文件浏览器，不需要再重复集成。</strong></p>
+<h2 id="独立集成"><a href="#独立集成" class="headerlink" title="独立集成"></a>独立集成</h2><p>cocoapods快速集成</p>
+<pre><code class="ruby">pod &#39;ZXFileBrowser&#39;
+</code></pre>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code class="swift">ZXFileBrowser.shared().start()
+</code></pre>
+<h2 id="支持ZXKit"><a href="#支持ZXKit" class="headerlink" title="支持ZXKit"></a>支持<code>ZXKit</code></h2><p><strong>如果您已经集成了<code>ZXKitSwift</code>，插件列表中会自动显示该文件浏览器，不需要再重复集成。</strong></p>
+<p>如果需要支持<code>ZXKit</code>，可以使用cocoapods快速集成</p>
+<pre><code class="ruby">pod &#39;ZXFileBrowser/zxkit&#39;
+</code></pre>
+<p>之后可在<code>AppDelegate</code>的启动函数中注册到<code>ZXKit</code>即可</p>
+<pre><code class="swift">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool &#123;
+    
+    //ZXKit注册
+    ZXKit.regist(plugin: ZXFileBrowser.shared())
+    
+    return true
+&#125;
+</code></pre>
+<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p><img src="/images/2021-05-13.gif"></p>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a target="_blank" rel="noopener" href="https://github.com/ZXKitCode/ZXFileBrowser">ZXKitCode/ZXFileBrowser</a></p>
 
-                    <ul class="post-date">
-                        <li>
-                            2021年5月13日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="/images/2021-05-13.gif">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2021/5224f33c99ae.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/0860115e66e0.html">
-                            iOS端ping工具-HDPingTools
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            2021年5月11日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        <p>这是一个ios平台用来ping的工具，使用swift语言开发。支持使用cocoapods集成。三步即可使用</p>
-                            <a href="/2021/0860115e66e0.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/58db9051a5b4.html">
-                            iOS日志调试工具-Logger
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            2021年5月11日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="/images/logger/preview.gif">
-                        </div>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2021/58db9051a5b4.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/plugin/">
-                        plugin
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2021/21109ad2ad7a.html">
-                            iOS FPS显示插件
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            2021年5月9日
-                        </li>
-                        <li>
-                            DamonHu
-                        </li>
-                    </ul>
-                    
-                        <div class="post-cover">
-                            <img src="/images/2021-05-06.png">
-                        </div>
-                    
-                    <div class="post-content ">
-                        <p>FPS是图像领域中的定义，是指画面每秒传输帧数，通俗来讲就是指动画或视频的画面数。FPS是测量用于保存、显示动态视频的信息数量。每秒钟帧数越多，所显示的动作就会越流畅。通常，要避免动作不流畅的最低是30。</p>
-<p>该工具可用来iOS平台测试帧率，同时显示在<code>ZXKit</code>的列表和悬浮窗中</p>
-                            <a href="/2021/21109ad2ad7a.html" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+    </div>
+</article>
             </main>
         
     </div>
