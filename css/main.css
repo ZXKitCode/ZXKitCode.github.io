@@ -109,7 +109,6 @@ a:hover {
 .main-des-intro{
 	margin-top: 20px;
 	display: flex;
-	align-items: center;
 	justify-content: space-around;
 	border-top: 1px solid #cecece;
 }
@@ -134,7 +133,7 @@ a:hover {
 
 footer {
 	position: relative;
-	margin-top: 100px;
+	margin-top: 160px;
 	background-color: #eeeeee;
 	height: 300px;
 }
@@ -147,4 +146,29 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.footer-link-list {
+	display: flex;
+	justify-content: center;
+}
+.footer-link-list-item{
+	margin-top: 30px;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+}
+.footer-link-list-item-title{
+	color: #333333;
+	font-weight: 500;
+	font-size: 16px;
+}
+.footer-link-list-item-content{
+	display: flex;
+}
+.footer-link-list-text{
+	color: #666666;
+	margin-top: 12px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.2;
 }
